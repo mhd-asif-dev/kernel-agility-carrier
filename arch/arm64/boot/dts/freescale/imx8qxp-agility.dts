@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-2.0+
+/*
+ * Copyright 2017-2020 NXP
+ */
+
+/dts-v1/;
+
+#include "imx8qxp.dtsi"
+#include "imx8qxp-agility.dtsi"
+
+/ {
+	model = "Agility SOM iMX8QXP";
+	compatible = "fsl,imx8qxp-mek", "fsl,imx8qxp";
+};

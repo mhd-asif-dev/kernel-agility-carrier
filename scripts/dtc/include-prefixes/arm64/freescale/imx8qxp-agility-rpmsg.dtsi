@@ -1,0 +1,53 @@
+// SPDX-License-Identifier: GPL-2.0+
+// Copyright NXP 2019
+
+
+/delete-node/ &cm40_i2c;
+/delete-node/ &i2c1;
+
+/ {
+	aliases {
+		i2c1 = &i2c_rpbus_1;
+	};
+};
+
+&cm40_i2c_lpcg {
+	status = "disabled";
+};
+
+&i2c1_lpcg {
+	status = "disabled";
+};
+
+&can0_lpcg {
+	status = "disabled";
+};
+
+&flexcan1 {
+	status = "disabled";
+};
+
+&flexcan2 {
+	status = "disabled";
+};
+
+&cm40_intmux {
+	status = "disabled";
+};
+
+&flexspi0 {
+	status = "disabled";
+};
+
+&lpuart3 {
+	status = "disabled";
+};
+
+&uart3_lpcg {
+	status = "disabled";
+};
+
+&imx8x_cm4 {
+	/* Assume you have partitioned M4, so M4 is ont controled by Linux */
+	/delete-property/ power-domains;
+};
