@@ -327,6 +327,22 @@
         status = "okay";
 };
 
+//added support for EEPROM(M24C02-RMN6TP) 
+&i2c0 {
+        clock-frequency = <100000>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_i2c0>;
+        #address-cells = <1>;
+		#size-cells = <0>;
+		status = "okay";
+				
+        st24c02:eeprom@50 {
+                compatible = "atmel,24c02";
+                reg = <0x50>;
+                pagesize = <16>;
+        };		
+};
+
 &usbotg3 {
 	status = "okay";
 };
@@ -615,5 +631,13 @@
 			IMX8QXP_ENET0_RGMII_RXD3_CONN_ENET0_RGMII_RXD3		0x61
 		>;
 	};
+
+	pinctrl_i2c0: i2c0grp {
+		fsl,pins = <
+			IMX8QXP_MIPI_CSI0_GPIO0_00_ADMA_I2C0_SCL	0x06000021
+			IMX8QXP_MIPI_CSI0_GPIO0_01_ADMA_I2C0_SDA	0x06000021
+		>;
+	};
+
 
 };
