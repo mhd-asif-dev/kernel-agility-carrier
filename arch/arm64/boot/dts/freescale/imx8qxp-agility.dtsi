@@ -258,15 +258,22 @@
 	status = "okay";
 };
 
+//rs232 config
 &lpuart1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lpuart1>;
 	status = "okay";
 };
 
+//rs485 configs
 &lpuart2 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_lpuart2>;
+	pinctrl-0 = <&pinctrl_lpuart2>,<&pinctrl_rs485>;
+	rts-gpios = <&lsio_gpio1 15 GPIO_ACTIVE_LOW>;
+	//cts-gpios = <&lsio_gpio1 16 GPIO_ACTIVE_LOW>;
+	linux,rs485-enabled-at-boot-time;   /* Enable RS485 at boot time to skip using TIOCSRS485 ioctl */
+	uart-has-rs485-half-duplex;
+    rs485-rts-active-low;
 	status = "okay";
 };
 
@@ -596,6 +603,14 @@
 		fsl,pins = <
 			IMX8QXP_UART2_TX_ADMA_UART2_TX		0x06000020
 			IMX8QXP_UART2_RX_ADMA_UART2_RX		0x06000020
+		>;
+	};
+
+	pinctrl_rs485: rs485_grp{
+		fsl,pins = <
+			IMX8QXP_FLEXCAN0_RX_LSIO_GPIO1_IO15 0x00000021  //rts pin of rs485 controller
+			IMX8QXP_FLEXCAN0_TX_LSIO_GPIO1_IO16 0x00000021  //cts pin of rs485 controller
+	
 		>;
 	};
 
