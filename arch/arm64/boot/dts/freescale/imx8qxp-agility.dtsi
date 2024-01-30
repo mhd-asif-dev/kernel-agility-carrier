@@ -511,6 +511,17 @@
 	pinctrl-0 = <&pinctrl_gpio0>;
 	status="okay";
 };
+&lsio_gpio1 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_gpio1>;
+        status="okay";
+};
+
+&lsio_gpio3 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_gpio3>;
+        status="okay";
+};
 
 &lsio_gpio4 {
         pinctrl-names = "default";
@@ -538,11 +549,32 @@
 		>;
 	};
 
-	pinctrl_gpio0: gpio1grp {
+	pinctrl_gpio0: gpio0grp {
 		fsl,pins = <
 			IMX8QXP_SPI3_CS0_LSIO_GPIO0_IO16	0x21 
+			IMX8QXP_SPDIF0_TX_LSIO_GPIO0_IO11       0x21
+            IMX8QXP_SPDIF0_EXT_CLK_LSIO_GPIO0_IO12  0x21 
 		>;
 	};
+
+	pinctrl_gpio1: gpio1grp {
+        fsl,pins = <
+                IMX8QXP_ADC_IN0_LSIO_GPIO1_IO10         0x21
+                IMX8QXP_ADC_IN1_LSIO_GPIO1_IO09         0x21
+                IMX8QXP_ADC_IN4_LSIO_GPIO1_IO14         0x21
+                IMX8QXP_ADC_IN5_LSIO_GPIO1_IO13         0x21 
+			>;
+    };
+
+	pinctrl_gpio3: gpio3grp {
+        fsl,pins = <
+                IMX8QXP_QSPI0B_SCLK_LSIO_GPIO3_IO17     0x21
+                IMX8QXP_QSPI0B_DATA0_LSIO_GPIO3_IO18    0x21
+                IMX8QXP_QSPI0B_DATA1_LSIO_GPIO3_IO19    0x21
+                IMX8QXP_QSPI0B_DATA2_LSIO_GPIO3_IO20    0x21
+                IMX8QXP_QSPI0B_DATA3_LSIO_GPIO3_IO21    0x21
+			>;
+    };
 
 	pinctrl_lpuart0: lpuart0grp {
 		fsl,pins = <
