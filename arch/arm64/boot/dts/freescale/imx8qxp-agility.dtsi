@@ -322,6 +322,11 @@
 	status = "okay";
 };
 
+&usbotg1 {
+        dr_mode = "host";
+        status = "okay";
+};
+
 &usbotg3 {
 	status = "okay";
 };
