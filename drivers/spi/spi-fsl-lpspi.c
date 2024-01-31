@@ -73,6 +73,7 @@
 #define CFGR1_PINCFG	(BIT(24)|BIT(25))
 #define CFGR1_PCSPOL	BIT(8)
 #define CFGR1_NOSTALL	BIT(3)
+#define CFGR1_SAMPLE	BIT(1)
 #define CFGR1_MASTER	BIT(0)
 #define FSR_TXCOUNT	(0xFF)
 #define RSR_RXEMPTY	BIT(1)
@@ -404,6 +405,8 @@ static int fsl_lpspi_config(struct fsl_lpspi_data *fsl_lpspi)
 		temp = CFGR1_PINCFG;
 	if (fsl_lpspi->config.mode & SPI_CS_HIGH)
 		temp |= CFGR1_PCSPOL;
+	
+	temp |= CFGR1_SAMPLE ;//this will enable the delayed clock to fetch data. this will improve the data setup time
 	writel(temp, fsl_lpspi->base + IMX7ULP_CFGR1);
 
 	temp = readl(fsl_lpspi->base + IMX7ULP_CR);

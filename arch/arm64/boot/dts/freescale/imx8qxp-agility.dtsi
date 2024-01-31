@@ -444,7 +444,7 @@
 		compatible = "sst,sst25vf016b","jedec,spi-nor";
 		reg = <0>;
 		m25p,fast-read;
-		spi-max-frequency = <25000000>;
+		spi-max-frequency = <50000000>;
 	};
 };
 
